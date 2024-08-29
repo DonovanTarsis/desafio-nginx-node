@@ -10,25 +10,23 @@ const config = {
 const mysql = require('mysql')
 const connection = mysql.createConnection(config)
 
-
-connection.query(sqlInsert)
-
-
-
 app.get('/', (req, res) => {
     const names = [
         "Ana", "Beatriz", "Carlos", "Daniel", "Eduardo", "Fernanda", "Gabriel", "Helena", "Isabela", "João", 
         "Larissa", "Mariana", "Nathalia", "Otávio", "Pedro", "Rafael", "Sofia", "Tiago", "Valentina", "Yasmin"
     ]
+
     connection.query(`INSERT INTO people (name) VALUES ('${names[gerarNumeroAleatorio(names.length)]}')`, (err, result) => {
       if (err) throw err;
+
       connection.query('SELECT * FROM people', (err, results) => {
         if (err) throw err;
-
         let namesList = '<h1>Full Cycle Rocks!</h1>\n<ul>\n';
+
         results.forEach(person => {
           namesList += `<li>${person.name}</li>\n`;
         });
+
         namesList += '</ul>';
   
         res.send(namesList);
