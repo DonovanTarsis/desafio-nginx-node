@@ -11,8 +11,6 @@ services:
     networks:
       - node-mysql
       - node-nginx
-    volumes:
-      - ./node:/usr/src/app:rw
     tty: true
     ports:
       - "3000"

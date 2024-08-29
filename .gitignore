@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Diretórios de construção e ambientes
+dist/
+build/
+.env
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
