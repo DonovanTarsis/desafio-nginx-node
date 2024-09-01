@@ -6,12 +6,14 @@ services:
     image: donovantarsis/node-app:prod
     container_name: app
     entrypoint: dockerize -wait tcp://db-mysql:3306 -timeout 120s docker-entrypoint.sh
-    command: node index.js
+    command: sh -c "npm install && node index.js"
     restart: always
     networks:
       - node-mysql
       - node-nginx
     tty: true
+    volumes:
+      - ./node:/usr/src/app
     ports:
       - "3000"
     depends_on:
